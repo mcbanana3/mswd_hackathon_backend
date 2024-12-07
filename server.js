@@ -12,10 +12,6 @@ import job from "./cron/cron.js";
 import cors from "cors";
 
 dotenv.config();
-
-// Create the Express app
-const app = express();
-
 // CORS configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === "production" ? 'https://mswd-hackathon-frontend.vercel.app' : '*', // Allow all in development
