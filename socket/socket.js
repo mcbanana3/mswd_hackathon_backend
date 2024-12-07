@@ -6,14 +6,12 @@ import Conversation from "../models/conversationModel.js";
 
 const app = express();
 const server = http.createServer(app);
-const io = require('socket.io')(server, {
+const io = new Server(server, {
 	cors: {
-	  origin: process.env.NODE_ENV === "production" ? 'https://mswd-hackathon-frontend.vercel.app' : '*',
-	  methods: ["GET", "POST"],
-	  credentials: true
-	}
-  });
-  
+		origin: "*",
+		methods: ["GET", "POST"],
+	},
+})
 
 
 export const getRecipientSocketId = (recipientId) => {
