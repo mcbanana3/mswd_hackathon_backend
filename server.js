@@ -12,23 +12,9 @@ import job from "./cron/cron.js";
 
 dotenv.config();
 
-const allowedOrigins = [ 
-	"https://mswd-hackathon-frontend.vercel.app", // Replace with your production frontend URL
-  ];
-  
-  app.use(
-	cors({
-	  origin: (origin, callback) => {
-		if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-		  callback(null, true);
-		} else {
-		  callback(new Error("Not allowed by CORS"));
-		}
-	  },
-	  credentials: true, // Allow credentials like cookies to be sent along with requests
-	})
-  );
-  
+app.use(cors({
+	origin: 'https://mswd-hackathon-frontend.vercel.app'  
+  }));
 
 connectDB();
 job.start();
@@ -42,7 +28,7 @@ cloudinary.config({
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Middlewares
+// Middlewares	
 app.use(express.json({ limit: "50mb" })); // To parse JSON data in the req.body
 app.use(express.urlencoded({ extended: true })); // To parse form data in the req.body
 app.use(cookieParser());
