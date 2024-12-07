@@ -9,8 +9,13 @@ import messageRoutes from "./routes/messageRoutes.js";
 import { v2 as cloudinary } from "cloudinary";
 import { app, server } from "./socket/socket.js";
 import job from "./cron/cron.js";
+import cors from "cors";
 
 dotenv.config();
+
+app.use(cors({
+	origin: 'https://mswd-hackathon-frontend.vercel.app'  
+  }));
 
 connectDB();
 job.start();
