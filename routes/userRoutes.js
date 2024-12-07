@@ -10,18 +10,17 @@ import {
 	freezeAccount,
 	sendOtp
 } from "../controllers/userController.js";
-import protectRoute from "../middlewares/protectRoute.js";
 
 const router = express.Router();
 
 router.post("/send-otp",sendOtp)
 router.get("/profile/:query", getUserProfile);
-router.get("/suggested", protectRoute, getSuggestedUsers);
+router.get("/suggested", getSuggestedUsers);
 router.post("/signup", signupUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
-router.post("/follow/:id", protectRoute, followUnFollowUser); // Toggle state(follow/unfollow)
-router.put("/update/:id", protectRoute, updateUser);
-router.put("/freeze", protectRoute, freezeAccount);
+router.post("/follow/:id", followUnFollowUser); // Toggle state(follow/unfollow)
+router.put("/update/:id",  updateUser);
+router.put("/freeze",  freezeAccount);
 
 export default router;
