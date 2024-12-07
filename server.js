@@ -13,9 +13,18 @@ import cors from "cors";
 
 dotenv.config();
 
-app.use(cors({
-	origin: 'https://mswd-hackathon-frontend.vercel.app'  
-  }));
+const cors = require('cors');
+const app = express();
+
+// Allow requests from your frontend domain
+const corsOptions = {
+  origin: 'https://mswd-hackathon-frontend.vercel.app',
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+
+app.use(cors(corsOptions));
+
 
 connectDB();
 job.start();
