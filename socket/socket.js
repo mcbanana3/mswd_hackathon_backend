@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: "*",
+		origin: "https://mswd-hackathon-frontend-e6kjts6lh-aryan-yalavarthis-projects.vercel.app",
 		methods: ["GET", "POST"],
 	},
 })

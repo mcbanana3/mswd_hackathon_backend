@@ -12,6 +12,14 @@ import job from "./cron/cron.js";
 
 dotenv.config();
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://mswd-hackathon-frontend.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 connectDB();
 job.start();
 
